@@ -21,20 +21,6 @@ describe('parseStackTrack Method:', () => {
 })
 
 describe('parseOriginStackTrack Method:', () => {
-  it('正常测试', async () => {
-    const parser = new StackParser(resolve(__dirname, './data'))
-    const originStack = await parser.parseOriginStackTrack(error.stack, error.message)
-    // 断言
-    expect(originStack[0]).toMatchObject(
-      {
-        source: 'webpack:///src/index.js',
-        line: 24,
-        column: 4,
-        name: 'xxx'
-      }
-    )
-  })
-
   it('sourcemap文件不存在', async () => {
     const parser = new StackParser(resolve(__dirname, './xxx'))
     const originStack = await parser.parseOriginStackTrack(error.stack, error.message)
